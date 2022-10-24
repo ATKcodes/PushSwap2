@@ -14,24 +14,23 @@
 
 void	sa(t_push *push)
 {
-	if (push->a.size < 2)
-		return (NULL);
-	swap_a(push, 0);
+	if (push->a.size >= 2)
+		swap_a(push, 0);
 }
 
 void	sb(t_push *push)
 {
-	if (push->b.size < 2)
-		return (NULL);
-	swap_b(push, 0);
+	if (push->b.size >= 2)
+		swap_b(push, 0);
 }
 
 void	ss(t_push *push)
 {
-	if (push->a.size < 2 || push->b.size < 2)
-		return (NULL);
-	swap_a(push, 0);
-	swap_b(push, 0);
+	if (push->a.size >= 2 && push->b.size >= 2)
+	{
+		swap_a(push, 0);
+		swap_b(push, 0);
+	}
 }
 
 void	pa(t_push *push)
@@ -39,26 +38,27 @@ void	pa(t_push *push)
 	int		i;
 	t_elem	temp;
 
-	if (!push->b.array)
-		return (NULL);
-	push->swap.array = malloc (sizeof(t_elem) * --push->b.size);
-	temp = push->b.array[0];
-	i = -1;
-	while (++i < push->b.size)
-		push->swap.array[i] = push->b.array[i + 1];
-	free (push->b.array);
-	push->b.array = push->swap.array;
-	if (push->swap.array)
-		free(push->swap.array);
-	push->swap.array = malloc (sizeof(t_elem) * ++push->a.size);
-	push->swap.array[0] = temp;
-	i = 0;
-	while (++i < push->a.size)
-		push->swap.array[i] = push->a.array[i - 1];
-	free (push->a.array);
-	push->a.array = push->swap.array;
-	if (push->swap.array)
-		free(push->swap.array);
+	if (push->b.array)
+	{
+		push->swap.array = malloc (sizeof(t_elem) * --push->b.size);
+		temp = push->b.array[0];
+		i = -1;
+		while (++i < push->b.size)
+			push->swap.array[i] = push->b.array[i + 1];
+		free (push->b.array);
+		push->b.array = push->swap.array;
+		if (push->swap.array)
+			free(push->swap.array);
+		push->swap.array = malloc (sizeof(t_elem) * ++push->a.size);
+		push->swap.array[0] = temp;
+		i = 0;
+		while (++i < push->a.size)
+			push->swap.array[i] = push->a.array[i - 1];
+		free (push->a.array);
+		push->a.array = push->swap.array;
+		if (push->swap.array)
+			free(push->swap.array);
+	}
 }
 
 void	pb(t_push *push)
@@ -66,24 +66,66 @@ void	pb(t_push *push)
 	int		i;
 	t_elem	temp;
 
-	if (!push->a.array)
-		return (NULL);
-	push->swap.array = malloc (sizeof(t_elem) * --push->a.size);
-	temp = push->a.array[0];
-	i = -1;
-	while (++i < push->a.size)
-		push->swap.array[i] = push->a.array[i + 1];
-	free (push->a.array);
-	push->a.array = push->swap.array;
-	if (push->swap.array)
+	if (push->a.array)
+	{	
+		push->swap.array = malloc (sizeof(t_elem) * --push->a.size);
+		temp = push->a.array[0];
+		i = -1;
+		while (++i < push->a.size)
+			push->swap.array[i] = push->a.array[i + 1];
+		free (push->a.array);
+		// printf("size = %d\n", push->a.size);
+		push->a.array = push->swap.array;
+		for (int d = 0; d < push->a.size; d++)
+			printf("indice : %d, numero : %d\n", d, push->swap.array[d].n);
+		for (int d = 0; d < push->a.size; d++)
+			printf("indice : %d, numero : %d\n", d, push->a.array[d].n);
 		free(push->swap.array);
-	push->swap.array = malloc (sizeof(t_elem) * ++push->b.size);
-	push->swap.array[0] = temp;
-	i = 0;
-	while (++i < push->b.size)
-		push->swap.array[i] = push->b.array[i - 1];
-	free (push->b.array);
-	push->b.array = push->swap.array;
-	if (push->swap.array)
-		free(push->swap.array);
+		push->swap.array = NULL;
+		// for (int d = 0; d < push->a.size; d++)
+		// 	printf("indice : %d, numero : %d\n", d, push->a.array[d].n);
+		printf("size = %d\n", push->b.size);
+		push->temp.array = malloc (sizeof(t_elem) * ++push->b.size);
+		printf("size = %d\n", push->b.size);
+		push->temp.array[0] = temp;
+		for (int d = 0; d < push->a.size; d++)
+			printf("indice : %d, numero : %d\n", d, push->a.array[d].n);
+		i = 0;
+		while (++i < push->b.size)
+			push->temp.array[i] = push->b.array[i - 1];
+		if (push->b.array)
+			free (push->b.array);
+		push->b.array = push->temp.array;
+		free (push->temp.array);
+		for (int d = 0; d < push->a.size; d++)
+			printf("indice : %d, numero : %d\n", d, push->a.array[d].n);
+	}
+	for (int d = 0; d < push->a.size; d++)
+		printf("indice : %d, numero : %d\n", d, push->a.array[d].n);
+	// printf ("b : %d", push->b.array[0].n);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

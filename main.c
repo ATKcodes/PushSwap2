@@ -13,7 +13,6 @@
 #include "pushswap.h"
 
 //Retarded is_copy. Mistake on the array? idk
-//moves.
 void	third_stack_sorting(t_push *push)
 {
 	int	i;
@@ -97,13 +96,16 @@ int	main(int argc, char *argv[])
 {
 	t_push	push;
 
+	push.b.size = 0;
 	count_letters(argc, argv, &push);
 	check_input(&push);
 	stack_gen(&push);
 	third_stack_sorting(&push);
-	for (int i; i < push.a.size; i++)
-		printf("n - %d - pos %d\n", push.a.array[i].n, push.a.array[i].pos);
-	pa(&push);
-	for (int i; i < push.a.size; i++)
-		printf("n - %d - pos %d\n", push.a.array[i].n, push.a.array[i].pos);
+	// for (int i = 0; i < push.a.size; i++)
+	// 	printf("n - %d - pos %d\n", push.a.array[i].n, push.a.array[i].pos);
+	pb(&push);
+	// for (int d = 0; d < push->a.size ; d++)
+	// 	printf("i : %d, n : %d\n", d, push->a.array[d].n);
+	// for (int d = 0; d < push->a.size ; d++)
+	// 	printf("i : %d, n : %d\n", d, push->a.array[d].n);
 }

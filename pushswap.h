@@ -42,6 +42,7 @@ typedef struct s_push{
 	t_array	b;
 	t_array	c;
 	t_array	swap;
+	t_array	temp;
 	t_pars	pars;
 }			t_push;
 
