@@ -104,8 +104,6 @@ int	main(int argc, char *argv[])
 	// for (int i = 0; i < push.a.size; i++)
 	// 	printf("n - %d - pos %d\n", push.a.array[i].n, push.a.array[i].pos);
 	pb(&push);
-	// for (int d = 0; d < push->a.size ; d++)
-	// 	printf("i : %d, n : %d\n", d, push->a.array[d].n);
-	// for (int d = 0; d < push->a.size ; d++)
-	// 	printf("i : %d, n : %d\n", d, push->a.array[d].n);
+	// for (int d = 0; d < push.a.size ; d++)
+	// 	printf("i : %d, n : %d\n", d, push.a.array[d].n);
 }

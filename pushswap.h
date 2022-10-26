@@ -52,6 +52,7 @@ void	ss(t_push *push);
 void	pa(t_push *push);
 void	pb(t_push *push);
 
+void	pb2(t_push *push, t_elem temp);
 void	ra(t_push *push);
 void	rb(t_push *push);
 void	rr(t_push *push);
