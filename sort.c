@@ -27,7 +27,7 @@ void	assigning_a(t_push *push)
 		d = -1;
 		while (++d < push->a.size)
 			if (push->a.array[i] == push->c.array[d])
-				push->a.array[i] = d;
+				push->a.array[i] = d + 1;
 	}
 }
 

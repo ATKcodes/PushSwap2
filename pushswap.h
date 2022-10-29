@@ -35,7 +35,17 @@ typedef struct s_pars{
 	char	**split;
 	int		size;
 	long	*array;
-}	t_pars;
+}			t_pars;
+
+typedef struct s_calc{
+	int		**matrix;
+	int		*result;
+	int		llen;
+	int		maxsize;
+	int		currentmax;
+	int		current_row;
+	int		newnumb;
+}			t_calc;
 
 typedef struct s_push{
 	t_stack	a;
@@ -44,6 +54,7 @@ typedef struct s_push{
 	t_stack	swap;
 	t_pars	pars;
 	int		temp;
+	t_calc	calc;
 }			t_push;
 
 void	free_all(t_push *push);
@@ -76,6 +87,8 @@ void	not_int(t_push *push);
 void	is_copy(t_push *push);
 char	*dfltcase(char *s, int start, int len);
 char	*ft_substr(char *s, int start, int len);
+void	*ft_calloc(int nmeb, int size);
+void	*ft_memset(void *s, int c, int n);
 
 char	*ft_strjoin(char *s1, char *s2);
 char	**ft_countwords(char *s, char c, int i, int n);

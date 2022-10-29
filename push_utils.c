@@ -68,3 +68,29 @@ int	ft_putstr(char *str)
 	write (1, "(null)", 6);
 	return (6);
 }
+
+void	*ft_memset(void *s, int c, int n)
+{
+	int		i;
+	char	*str;
+
+	str = s;
+	i = 0;
+	while (i < n)
+	{
+		str[i] = c;
+		i++;
+	}
+	return (s);
+}
+
+void	*ft_calloc(int nmeb, int size)
+{
+	void	*a;
+
+	a = malloc (size * nmeb);
+	if (a == NULL)
+		return (a);
+	ft_memset(a, 0, (size * nmeb));
+	return (a);
+}
