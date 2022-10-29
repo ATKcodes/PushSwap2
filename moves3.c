@@ -14,8 +14,8 @@
 
 void	rra(t_push *push)
 {
-	int		i;
-	t_elem	temp;
+	int	i;
+	int	temp;
 
 	i = push->a.size;
 	temp = push->a.array[i - 1];
@@ -26,8 +26,8 @@ void	rra(t_push *push)
 
 void	rrb(t_push *push)
 {
-	int		i;
-	t_elem	temp;
+	int	i;
+	int	temp;
 
 	i = push->b.size;
 	temp = push->b.array[i - 1];
@@ -38,8 +38,8 @@ void	rrb(t_push *push)
 
 void	rrr(t_push *push)
 {
-	int		i;
-	t_elem	temp;
+	int	i;
+	int	temp;
 
 	i = push->a.size;
 	temp = push->a.array[i - 1];

@@ -14,8 +14,8 @@
 
 void	ra(t_push *push)
 {
-	int		i;
-	t_elem	temp;
+	int	i;
+	int	temp;
 
 	i = -1;
 	temp = push->a.array[0];
@@ -26,8 +26,8 @@ void	ra(t_push *push)
 
 void	rb(t_push *push)
 {
-	int		i;
-	t_elem	temp;
+	int	i;
+	int	temp;
 
 	i = -1;
 	temp = push->b.array[0];
@@ -38,8 +38,8 @@ void	rb(t_push *push)
 
 void	rr(t_push *push)
 {
-	int		i;
-	t_elem	temp;
+	int	i;
+	int	temp;
 
 	i = -1;
 	temp = push->a.array[0];
@@ -51,4 +51,48 @@ void	rr(t_push *push)
 	while (++i < (push->b.size - 1))
 		push->b.array[i] = push->b.array[i + 1];
 	push->b.array[i] = temp;
+}
+
+void	pb(t_push *push)
+{
+	int	i;
+	int	temp;
+
+	if (push->a.size > 0)
+	{
+		i = -1;
+		push->swap.array = malloc (sizeof(int) * --push->a.size);
+		temp = push->a.array[0];
+		while (++i < push->a.size)
+			push->swap.array[i] = push->a.array[i + 1];
+		free (push->a.array);
+		i = -1;
+		push->a.array = malloc (sizeof(int) * push->a.size);
+		while (++i < push->a.size)
+			push->a.array[i] = push->swap.array[i];
+		free (push->swap.array);
+		pb2(push, temp);
+	}
+}
+
+void	pa(t_push *push)
+{
+	int	i;
+	int	temp;
+
+	if (push->b.size > 0)
+	{
+		i = -1;
+		push->swap.array = malloc (sizeof(int) * --push->b.size);
+		temp = push->b.array[0];
+		while (++i < push->b.size)
+			push->swap.array[i] = push->b.array[i + 1];
+		free (push->b.array);
+		i = -1;
+		push->b.array = malloc (sizeof(int) * push->b.size);
+		while (++i < push->b.size)
+			push->b.array[i] = push->swap.array[i];
+		free (push->swap.array);
+		pa2(push, temp);
+	}
 }

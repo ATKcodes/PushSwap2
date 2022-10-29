@@ -24,10 +24,10 @@ typedef struct s_elem{
 	int	pos;
 }			t_elem;
 
-typedef struct s_array{
-	t_elem	*array;
+typedef struct s_stack{
+	int		*array;
 	int		size;
-}			t_array;
+}			t_stack;
 
 typedef struct s_pars{
 	int		pos;
@@ -38,13 +38,15 @@ typedef struct s_pars{
 }	t_pars;
 
 typedef struct s_push{
-	t_array	a;
-	t_array	b;
-	t_array	c;
-	t_array	swap;
-	t_array	temp;
+	t_stack	a;
+	t_stack	b;
+	t_stack	c;
+	t_stack	swap;
 	t_pars	pars;
+	int		temp;
 }			t_push;
+
+void	free_all(t_push *push);
 
 void	sa(t_push *push);
 void	sb(t_push *push);
@@ -52,10 +54,11 @@ void	ss(t_push *push);
 void	pa(t_push *push);
 void	pb(t_push *push);
 
-void	pb2(t_push *push, t_elem temp);
 void	ra(t_push *push);
 void	rb(t_push *push);
 void	rr(t_push *push);
+void	pa2(t_push *push, int temp);
+void	pb2(t_push *push, int temp);
 
 void	rra(t_push *push);
 void	rrb(t_push *push);

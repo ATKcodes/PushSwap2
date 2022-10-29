@@ -18,9 +18,9 @@ void	third_stack_sorting(t_push *push)
 	int	i;
 
 	i = -1;
-	push->c.array = malloc (sizeof(push->c.array) * push->a.size);
+	push->c.array = malloc (sizeof(int) * push->a.size);
 	while (++i < push->a.size)
-		push->c.array[i].n = push->a.array[i].n;
+		push->c.array[i] = push->a.array[i];
 	sorting_c(push);
 	assigning_a(push);
 }
@@ -48,7 +48,7 @@ void	stack_gen(t_push *push)
 	push->a.size = push->pars.size;
 	i = -1;
 	while (++i < push->pars.size)
-		push->a.array[i].n = (int) push->pars.array[i];
+		push->a.array[i] = (int) push->pars.array[i];
 	free (push->pars.array);
 	is_copy(push);
 }
@@ -96,14 +96,18 @@ int	main(int argc, char *argv[])
 {
 	t_push	push;
 
-	push.b.size = 0;
 	count_letters(argc, argv, &push);
 	check_input(&push);
 	stack_gen(&push);
 	third_stack_sorting(&push);
 	// for (int i = 0; i < push.a.size; i++)
-	// 	printf("n - %d - pos %d\n", push.a.array[i].n, push.a.array[i].pos);
-	pb(&push);
-	// for (int d = 0; d < push.a.size ; d++)
-	// 	printf("i : %d, n : %d\n", d, push.a.array[d].n);
+	// 	printf("stack a[i] = %d\n", push.a.array[i]);
+	// for (int i = 0; i < push.a.size; i++)
+	// 	printf("stack c[i] = %d\n", push.c.array[i]);
+	
+	// for (int i = 0; i < push.a.size; i++)
+	// 	printf("stack a[i] = %d\n", push.a.array[i]);
+	// for (int i = 0; i < push.b.size; i++)
+	// 	printf("stack b[i] = %d\n", push.b.array[i]);
+	free_all(&push);
 }

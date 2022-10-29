@@ -23,9 +23,9 @@ void	is_copy(t_push *push)
 		d = -1;
 		while (++d < i)
 		{
-			if (push->a.array[d].n == push->a.array[i].n)
+			if (push->a.array[d] == push->a.array[i])
 			{
-				free (push->pars.array);
+				free (push->a.array);
 				ft_error ("invalid input : arguments are not unique");
 			}
 		}
