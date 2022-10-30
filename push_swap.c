@@ -11,7 +11,34 @@
 /* ************************************************************************** */
 
 #include "pushswap.h"
-//RISCRIVI STA CAGATA, PENSA AI VARI CASI. RAGIONA UN ELEMENTO ALLA VOLTA DELL' ARRAY dio stronzo
+
+int	alen(int *array)
+{
+	int	i;
+
+	i = 0;
+	while (array[i] != 0)
+		i++;
+	return (i);
+}
+
+void	copy_earlier(t_push *push)
+{
+	int	i;
+
+	i = -1;
+	while (push->calc.matrix[push->calc.rcopy][++i] > 0)
+	{
+		push->calc.matrix[push->calc.rlast][i]
+			= push->calc.matrix[push->calc.rcopy][i];
+	}
+	push->calc.cmax = push->calc.rlast;
+}
+
+// Next solution? > sul Jamboard : in breve > newnumb > 
+// lastNumberarray[currentrow]? 
+//se si Copia l'array attuale in un nuovo array e vai next,
+//se no vai last Number array - ++n e riprova.
 void	push_cycle(t_push *push)
 {
 	int	i;
@@ -21,34 +48,28 @@ void	push_cycle(t_push *push)
 
 	i = 0;
 	push->calc.matrix[0][0] = push->a.array[0];
-	while (++i < push->calc.maxsize)
+	while (++i < push->a.size)
 	{
 		push->calc.newnumb = push->a.array[i];
-		//d = 0;
-		// while (++d < push->calc.maxsize)
-		// {
-		// 	e = 0;
-		// 	n = 0;
-		// 	if (push->calc.matrix[i][d] > push->calc.matrix[i - 1][d - 1])
-		// 	{
-		// 		
-		// 		while (++n < push->calc.currentmax)
-		// 			push->calc.matrix[++push->calc.current_row][n]
-		// 				= push->calc.matrix[push->calc.current_row - 1][n];
-		// 		push->calc.matrix[push->calc.current_row][n]
-		// 			= push->calc.matrix[i][d];
-		// 	}
-		// 	else
-		// 	{
-		// 		n = d;
-		// 		while (n - ++e > 0)
-		// 		{
-		// 			while (push->calc.matrix[i][d]
-		// 				< push->calc.matrix[i - e][n]
-		// 				&& (e < d)
-		// 		}
-		// 	}
-		// }
+		if (push->calc.newnumb
+			> push->calc.matrix[push->calc.cmax][push->calc.maxlen - 1])
+		{
+			push->calc.rlast++;
+			push->calc.rcopy = push->calc.cmax;
+			copy_earlier(push);
+			push->calc.maxlen = alen(push->calc.matrix[push->calc.rlast]);
+			push->calc.matrix[push->calc.rlast][++push->calc.maxlen]
+				= push->calc.newnumb;
+		}
+		else
+		{
+			n = push->calc.rlast;
+			while (--n > 0)
+			{
+				if (push->calc.matrix[n][alen(push->calc.matrix[n]) - 1]
+					> push->calc.newnumb)
+			}
+		}
 	}
 }
 
@@ -57,12 +78,14 @@ void	push_swap(t_push *push)
 	int	i;
 
 	i = -1;
-	push->calc.currentmax = 1;
-	push->calc.current_row = 0;
-	push->calc.matrix = malloc (sizeof (int *) * push->calc.maxsize);
-	while (++i < push->calc.maxsize)
-		push->calc.matrix[i] = ft_calloc (sizeof (int), push->calc.maxsize);
+	push->calc.rlast = 0;
+	push->calc.cmax = 0;
+	push->calc.cmax = 0;
+	push->calc.maxlen = 1;
+	push->calc.matrix = malloc (sizeof (int *) * push->a.size);
+	while (++i < push->a.size)
+		push->calc.matrix[i] = ft_calloc (sizeof (int), push->a.size);
 	i = -1;
-	push->calc.result = ft_calloc (sizeof (int), push->calc.maxsize);
+	push->calc.result = ft_calloc (sizeof (int), push->a.size);
 	push_cycle(push);
 }

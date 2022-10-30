@@ -18,7 +18,6 @@ void	third_stack_sorting(t_push *push)
 	int	i;
 
 	i = -1;
-	push->calc.maxsize = push->a.size;
 	push->c.array = malloc (sizeof(int) * push->a.size);
 	while (++i < push->a.size)
 		push->c.array[i] = push->a.array[i];
