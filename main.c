@@ -12,7 +12,6 @@
 
 #include "pushswap.h"
 
-//Retarded is_copy. Mistake on the array? idk
 void	third_stack_sorting(t_push *push)
 {
 	int	i;
