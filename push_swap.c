@@ -35,11 +35,11 @@ void	copy_earlier(t_push *push)
 	push->calc.cmax = push->calc.rlast;
 }
 
-// Next solution? > sul Jamboard : in breve > newnumb > 
+// Next solution? > sul Jamboard : in breve -> newnumb > 
 // lastNumberarray[currentrow]? 
 //se si Copia l'array attuale in un nuovo array e vai next,
 //se no vai last Number array - ++n e riprova.
-void	push_cycle(t_push *push)
+void	push_cycle(t_push *push, int c)
 {
 	int	i;
 	int	d;
@@ -47,7 +47,7 @@ void	push_cycle(t_push *push)
 	int	n;
 
 	i = 0;
-	push->calc.matrix[0][0] = push->a.array[0];
+	push->calc.matrix[0][0] = push->a.array[c];
 	while (++i < push->a.size)
 	{
 		push->calc.newnumb = push->a.array[i];
@@ -75,17 +75,18 @@ void	push_cycle(t_push *push)
 
 void	push_swap(t_push *push)
 {
-	int	i;
+	int	c;
 
-	i = -1;
+	c = -1;
 	push->calc.rlast = 0;
 	push->calc.cmax = 0;
 	push->calc.cmax = 0;
 	push->calc.maxlen = 1;
-	push->calc.matrix = malloc (sizeof (int *) * push->a.size);
-	while (++i < push->a.size)
+	push->calc.matrix = malloc (sizeof (int *) * push->a.size * 2);
+	while (++c < push->a.size * 2)
 		push->calc.matrix[i] = ft_calloc (sizeof (int), push->a.size);
-	i = -1;
+	c = -1;
 	push->calc.result = ft_calloc (sizeof (int), push->a.size);
-	push_cycle(push);
+	while (++c < push->a.size)
+		push_cycle(push, c);
 }
