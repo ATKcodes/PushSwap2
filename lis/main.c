@@ -35,8 +35,7 @@ int last_less_occurrence(int *stack, int head_index)
 int	lis (int *stack, int *lis_array, int n)
 {
 	if (n == 0)
-		return (0);
-
+		return (void);
 	int lis_val;
 	int	head_index = n - 1;
 	int	inclusivesubStack_size;
@@ -46,6 +45,8 @@ int	lis (int *stack, int *lis_array, int n)
 
 	inclusivesubStack_size = n - 1;
 	exclusivesubStack_size = last_less_occurrence(stack, head_index);
+	char *str = "porcodio";
+		printf ("%s\n", str);
 	lis_array_copy_1 = ft_copy_array(lis_array, n);
 	lis_array_copy_2 = ft_copy_array(lis_array, n);
 
@@ -63,7 +64,6 @@ int	lis (int *stack, int *lis_array, int n)
 		lis_array = lis_array_copy_2;
 		lis_val = lis_without;
 	}
-	free(tmp);
 	return (lis_val);
 }
 
@@ -82,12 +82,12 @@ int main (int argc, char *argv[])
 	{
 		stack[i] = atoi(argv[i + 2]);
 		i++;
-	}	
+	}
 	printf("lis len is: %d\n", lis(stack, lis_array, n));
 	i = 0;
-	while (lis_array[i])
-	{
-		printf("lis[%d] = %d\n", i, lis_array[i]);
-		i++;
-	}
+	// while (lis_array[i])
+	// {
+	// 	printf("lis[%d] = %d\n", i, lis_array[i]);
+	// 	i++;
+	// }
 }
