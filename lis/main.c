@@ -1,6 +1,6 @@
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 int *ft_copy_array(int *array, int n)
 {
@@ -8,6 +8,7 @@ int *ft_copy_array(int *array, int n)
 	int i;
 
 	i = -1;
+	copied_array = malloc (sizeof(int) * n);
 	while (++i < n)
 		copied_array[i] = array[i];
 	return (copied_array);
@@ -35,7 +36,7 @@ int last_less_occurrence(int *stack, int head_index)
 int	lis (int *stack, int *lis_array, int n)
 {
 	if (n == 0)
-		return (void);
+		return (0);
 	int lis_val;
 	int	head_index = n - 1;
 	int	inclusivesubStack_size;
@@ -45,8 +46,6 @@ int	lis (int *stack, int *lis_array, int n)
 
 	inclusivesubStack_size = n - 1;
 	exclusivesubStack_size = last_less_occurrence(stack, head_index);
-	char *str = "porcodio";
-		printf ("%s\n", str);
 	lis_array_copy_1 = ft_copy_array(lis_array, n);
 	lis_array_copy_2 = ft_copy_array(lis_array, n);
 
@@ -80,14 +79,15 @@ int main (int argc, char *argv[])
 	i = 0;
 	while (i < n)
 	{
+		printf ("%d\n", i);
 		stack[i] = atoi(argv[i + 2]);
 		i++;
 	}
 	printf("lis len is: %d\n", lis(stack, lis_array, n));
 	i = 0;
-	// while (lis_array[i])
-	// {
-	// 	printf("lis[%d] = %d\n", i, lis_array[i]);
-	// 	i++;
-	// }
+	while (lis_array[i])
+	{
+		printf("lis[%d] = %d\n", i, lis_array[i]);
+		i++;
+	}
 }
