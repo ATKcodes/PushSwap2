@@ -44,6 +44,6 @@ function lis_rec(stack, cur_lis)
 	}
 }
 
-let sol = lis([11, 0, 23, 42, 1, 2, 31, 45]);
+let sol = lis([5, 3, 10, 8, 9, 1, 14, 2, 12]);
 console.log(sol);
 console.log(`lis len: ${sol.length}`);
