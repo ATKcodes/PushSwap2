@@ -29,6 +29,11 @@ int last_less_occurrence(int *stack, int head_index)
 	return (0);
 }
 
+int	lis(int *stack, int *cur_lis)
+{
+	
+}
+
 //last_less_occurrence = indice dell'ultimo numero minore stretto di head;
 // n = numero elementi stack,
 // lis_array = array indicizzato
@@ -48,15 +53,15 @@ int	lis (int *stack, int *lis_array, int n)
 	exclusivesubStack_size = last_less_occurrence(stack, head_index);
 	lis_array_copy_1 = ft_copy_array(lis_array, n);
 	lis_array_copy_2 = ft_copy_array(lis_array, n);
-
+ 
 	int	lis_with = lis(stack, lis_array_copy_1, inclusivesubStack_size);
-	int	lis_without = lis(stack, lis_array_copy_2, exclusivesubStack_size);
+	int	lis_without = lis(stack, lis_array_copy_2, exclusivesubStack_size + 1);
 
-	int	*tmp = lis_array;
+	// int	*tmp = lis_array;
 	if (1 + lis_with > lis_without)
 	{
 		lis_array = lis_array_copy_1;
-		lis_val = lis_with;
+		lis_val = 1 + lis_with;
 	}
 	else
 	{
@@ -79,7 +84,6 @@ int main (int argc, char *argv[])
 	i = 0;
 	while (i < n)
 	{
-		printf ("%d\n", i);
 		stack[i] = atoi(argv[i + 2]);
 		i++;
 	}
