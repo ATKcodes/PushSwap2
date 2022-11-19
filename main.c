@@ -99,14 +99,10 @@ int	main(int argc, char *argv[])
 	check_input(&push);
 	stack_gen(&push);
 	third_stack_sorting(&push);
-	// for (int i = 0; i < push.a.size; i++)
-	// 	printf("stack a[i] = %d\n", push.a.array[i]);
-	// for (int i = 0; i < push.a.size; i++)
-	// 	printf("stack c[i] = %d\n", push.c.array[i]);
 	push_swap(&push);
-	// for (int i = 0; i < push.a.size; i++)
-	// 	printf("stack a[i] = %d\n", push.a.array[i]);
-	// for (int i = 0; i < push.b.size; i++)
-	// 	printf("stack b[i] = %d\n", push.b.array[i]);
+	for (int i = 0; i < push.a.size; i++)
+		printf("stack a[i] = %d\n", push.a.array[i]);
+	for (int i = 0; i < push.b.size; i++)
+		printf("stack b[i] = %d\n", push.b.array[i]);
 	free_all(&push);
 }

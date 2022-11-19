@@ -26,7 +26,7 @@ function lis_rec(stack, cur_lis)
 		if (stack[stack.length - 1] > cur_lis[0])
 			return (lis_rec(stack.slice(0, stack.length - 1), cur_lis));
 		else {
-			new_cur_lis = cur_lis.slice(0); cur_lis.unshift(stack[stack.length - 1]);
+			new_cur_lis = cur_lis.slice(0); cur_lis.unshift(stack[stack.length - 1]); // copia cur_lis, aggiungendo l'ultimo elemento di stack all'inizio di cur_lis.
 			witho = lis_rec(
 				stack.slice(0, stack.length - 1),//* unshift = aggiungi all'inizio
 				new_cur_lis

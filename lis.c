@@ -26,12 +26,14 @@ void	lis(int stack, int len)
 {
 	int	*current_max;
 	int	*current_lis;
+	int	*array;
 	int	i;
 
+	array = calloc (sizeof(int) * len);
 	i = -1;
 	while (++i < len)
 	{
-		current_lis = lis_rec(ft_copy_array(stack, i), i)
+		current_lis = lis_rec(ft_copy_array(stack, i), array)
 		if (array_length(current_lis) > array_length(current_max));
 	}
 }

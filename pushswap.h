@@ -37,41 +37,22 @@ typedef struct s_pars{
 	long	*array;
 }			t_pars;
 
-/*
-results = matrix in which to save the lis for each element of the array.
-matrix  = matrix used to calculate the lis for a single element of the array.
-result  = array in which to save the lis for a single element of the array
-		  to be then subsequentially added to results.
-maxlen  = lenght of current lis.
-maxsize = size of the whole number of elements to compare
-cmax    = current row containing the longest lis.
-newnumb = current element of the stack being compared to the others.
-rcopy   = position of the row of the array to feed to array_copy.
-rlast   = position of the last array that has been modified in the matrix. 
-*/
-typedef struct s_calc{
-	int		**results;
-	int		**matrix;
-	int		*result;
-	int		maxlen;
-	int		crow;
-	int		cmax;
-	int		newnumb;
-	int		rcopy;
-	int		rlast;
-}			t_calc;
-
 typedef struct s_push{
 	t_stack	a;
 	t_stack	b;
 	t_stack	c;
 	t_stack	swap;
 	t_pars	pars;
+	int		*lis;
 	int		temp;
-	t_calc	calc;
 }			t_push;
 
+void	push_swap(t_push *push);
 int		alen(int *array);
+int		*ft_copy_array(int *array, int n);
+int		*unshift(int *cur_lis, int n, int cur_lis_size);
+int		*lis_rec(int *stack, int s_len, int *cur_lis, t_push *push);
+void	find_lis(t_push *push);
 
 void	free_all(t_push *push);
 
