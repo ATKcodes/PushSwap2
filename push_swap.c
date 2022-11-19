@@ -58,8 +58,8 @@ int	*lis_rec(int *stack, int s_len, int *cur_lis, t_push *push)
 	if (stack[s_len -1] > cur_lis[0])
 		return (lis_rec(ft_copy_array(stack, s_len - 1), s_len - 1, cur_lis, push));
 	new_cur_lis = ft_copy_array(cur_lis, push->a.size + 1);
-	cur_lis = unshift (cur_lis, stack[s_len - 1], push->a.size + 1);
-	with = lis_rec (ft_copy_array(stack, s_len - 1), s_len - 1, new_cur_lis, push);
+	cur_lis = ft_copy_array(unshift(cur_lis, stack[s_len - 1], push->a.size + 1), push->a.size + 1);
+	with = lis_rec(ft_copy_array(stack, s_len - 1), s_len - 1, new_cur_lis, push);
 	without = lis_rec(ft_copy_array(stack, s_len - 1), s_len - 1,
 		ft_copy_array(cur_lis, push->a.size + 1), push);
 	if (alen(without) > alen(with))
