@@ -98,6 +98,7 @@ void	find_lis(t_push *push)
 	int	*current_lis;
 	int	*current_max;
 	int	*array;
+	int	*rec;
 
 	current_max = ft_calloc (sizeof(int), 1);
 	array = ft_calloc (sizeof(int), 1);
