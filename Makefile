@@ -5,8 +5,8 @@ SRCS =	main.c push_utils.c parsing.c parsing2.c errors.c sort.c moves.c moves2.c
 
 OBJS = ${SRCS:.c=.o}
 
-#CC		= gcc -g
-CC		= gcc -g -fsanitize=address
+CC		= gcc -g
+#CC		= gcc -g -fsanitize=address
 RM		= rm -f
 
 CFLAGS = -Wall -Wextra -Werror

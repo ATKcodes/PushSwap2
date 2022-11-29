@@ -22,99 +22,57 @@ int	alen(int *array)
 	return (i);
 }
 
-void	ft_array_changer(int *to_copy, int **res, int copy_len)
+void	lis_search(t_push *push)
 {
-	int	i;
-
-	i = -1;
-	free (*res);
-	*res = ft_calloc (sizeof(int), (copy_len + 1)); 
-	while (++i < copy_len)
-		*res[i] = to_copy[i];
-}
-
-int	*ft_copy_array(int *array, int n)
-{
-	int *copied_array;
+	int	max;
 	int i;
+	int max_i;
 
+	max = 0;
 	i = -1;
-	copied_array = malloc (sizeof(int) * n);
-	while (++i < n)
-		copied_array[i] = array[i];
-	return (copied_array);
-}
-
-void	unshift(int **cur_lis, int n, int cur_lis_size)
-{
-	int	*array;
-	int	i;
-
-	array = ft_calloc (sizeof(int), cur_lis_size);
-	array[0] = n;
-	i = -1;
-	while (++i < cur_lis_size)
-		array[i + 1] = *cur_lis[i];
-	free (*cur_lis);
-	*cur_lis = ft_calloc (sizeof(int), cur_lis_size);
-	i = -1;
-	while (++i < cur_lis_size)
-		*cur_lis[i] = array[i];
-	free (array);
-}
-
-int	*lis_rec(int *stack, int s_len, int *cur_lis, t_push *push)
-{
-	int *with;
-	int	*without;
-	int	*new_cur_lis;
-
-	if (s_len == 0)
-		return (cur_lis);
-	if (stack[s_len -1] > cur_lis[0])
-		return (lis_rec(ft_copy_array(stack, s_len - 1), s_len - 1, cur_lis, push));
-	with = ft_calloc (sizeof(int), push->a.size + 1);
-	without = ft_calloc (sizeof(int), push->a.size + 1);
-	new_cur_lis = ft_calloc (sizeof(int), push->a.size + 1);
-	ft_array_changer(cur_lis, &new_cur_lis, push->a.size);
-	unshift(&cur_lis, stack[s_len - 1], push->a.size + 1);
-	ft_array_changer(lis_rec(ft_copy_array(stack, s_len - 1), s_len - 1, new_cur_lis, push), &with, push->a.size);
-	ft_array_changer(lis_rec(ft_copy_array(stack, s_len - 1), s_len - 1, cur_lis ,push), &without, push->a.size);
-	if (alen(without) > alen(with))
+	while (++i < push->a.size)
 	{
-		free (with);
-		return (without);
+		if (alen(push->lis[i]) > max)
+		{
+			max = alen(push->lis[i]);
+			max_i = i;
+		}
 	}
-	else
-	{
-		free (without);
-		return (with);
-	}
+	i = -1;
+	push->lis_final = ft_calloc (alen(push->lis[max_i]) + 1, sizeof(int));
+	while (++i < alen(push->lis[max_i]))
+		push->lis_final[i] = push->lis[max_i][i];
 }
 
 void	find_lis(t_push *push)
 {
 	int	i;
-	int	*current_lis;
-	int	*current_max;
-	int	*array;
-	int	*rec;
+	int n;
 
-	current_max = ft_calloc (sizeof(int), 1);
-	array = ft_calloc (sizeof(int), 1);
-	current_lis = ft_calloc (sizeof(int), 1);
 	i = -1;
+	push->lis = malloc (sizeof (int *) * push->a.size);
 	while (++i < push->a.size)
+		push->lis[i] = ft_calloc (sizeof(int), push->a.size + 1);
+	n = -1;
+	while (++n < push->a.size)
 	{
-		free(array);
-		array = ft_calloc (sizeof(int), push->a.size + 1);
-		array[0] = push->a.array[i];
-		ft_array_changer(lis_rec(push->a.array, i, array, push), &current_lis, push->a.size);
-		if (alen(current_lis) > alen(current_max))
-			ft_array_changer(current_lis, &current_max, push->a.size);
+		i = n;
+		push->lis[n][0] = push->a.array[n];
+		while (++i < push->a.size + n)
+		{
+			if (i < push->a.size)
+			{
+				if (push->a.array[i] > push->lis[n][alen(push->lis[n]) - 1])
+					push->lis[n][alen(push->lis[n])] = push->a.array[i];
+			}
+			else
+			{
+				if (push->a.array[i - push->a.size] > push->lis[n][alen(push->lis[n]) - 1])
+					push->lis[n][alen(push->lis[n])] = push->a.array[i - push->a.size];
+			}
+		}
 	}
-	push->lis = malloc (sizeof(int) * 1);
-	ft_array_changer(current_max, &push->lis, alen(current_max));
+	lis_search(push);
 }
 
 void	push_swap(t_push *push)
@@ -123,7 +81,8 @@ void	push_swap(t_push *push)
 
 	i = -1;
 	find_lis(push);
-	printf ("lis len : %d\n", alen(push->lis));
-	while (++i < alen(push->lis))
-		printf("lis [%d] = %d\n", i, push->lis[i]);
+	printf("lis len = %d\n", alen(push->lis_final));
+	i = -1;
+	while (++i < alen(push->lis_final))
+		printf ("%d\n", push->lis_final[i]);
 }

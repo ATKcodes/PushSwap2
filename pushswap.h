@@ -43,15 +43,13 @@ typedef struct s_push{
 	t_stack	c;
 	t_stack	swap;
 	t_pars	pars;
-	int		*lis;
+	int		**lis;
 	int		temp;
+	int		*lis_final;
 }			t_push;
 
 int		alen(int *array);
-void	ft_array_changer(int *to_copy, int **res, int copy_len);
-int		*ft_copy_array(int *array, int n);
-void	unshift(int **cur_lis, int n, int cur_lis_size);
-int		*lis_rec(int *stack, int s_len, int *cur_lis, t_push *push);
+void	lis_search(t_push *push);
 void	find_lis(t_push *push);
 void	push_swap(t_push *push);
 
