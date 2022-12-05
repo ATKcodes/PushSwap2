@@ -53,16 +53,6 @@ void	move_lis(t_push *push)
 	print_stacks(push);
 }
 
-int	alen(int *array)
-{
-	int	i;
-
-	i = 0;
-	while (array[i] != 0)
-		i++;
-	return (i);
-}
-
 void	lis_search(t_push *push)
 {
 	int	max;
@@ -114,8 +104,6 @@ void	find_lis(t_push *push)
 			}
 		}
 	}
-	lis_search(push);
-	free_matrix(push);
 }
 
 void	push_swap(t_push *push)
@@ -124,4 +112,7 @@ void	push_swap(t_push *push)
 
 	i = -1;
 	find_lis(push);
+	lis_search(push);
+	free_matrix(push);
+	calc_moves(push);
 }

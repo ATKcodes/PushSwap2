@@ -12,6 +12,7 @@
 
 #include "pushswap.h"
 
+//Continua dallo costruire la matrice per calcolare il numero minimo di mosse e il calcolo in se conseguenzialmente
 void	third_stack_sorting(t_push *push)
 {
 	int	i;
@@ -89,16 +90,6 @@ void	count_letters(int argc, char *argv[], t_push *push)
 		push->pars.input = ft_strjoin(push->pars.input, argv[i]);
 		push->pars.input = ft_strjoin(push->pars.input, " ");
 	}
-}
-
-void	print_stacks(t_push *push)
-{
-	for (int i = 0; i < push->a.size; i++)
-		printf("stack a[i] = %d\n", push->a.array[i]);
-	printf("\n");
-	for (int i = 0; i < push->b.size; i++)
-		printf("stack b[i] = %d\n", push->b.array[i]);
-	printf("\n\n");
 }
 
 int	main(int argc, char *argv[])

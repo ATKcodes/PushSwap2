@@ -27,6 +27,8 @@ typedef struct s_elem{
 typedef struct s_stack{
 	int		*array;
 	int		size;
+	int		max;
+	int		min;
 }			t_stack;
 
 typedef struct s_pars{
@@ -48,10 +50,11 @@ typedef struct s_push{
 	int		*lis_final;
 }			t_push;
 
-void	print_stacks(t_push *push);
+void	find_extremes(t_push *push);
+void	calc_moves(t_push *push);
+
 int		check_lis(t_push *push, int elem);
 void	move_lis(t_push *push);
-int		alen(int *array);
 void	lis_search(t_push *push);
 void	find_lis(t_push *push);
 void	push_swap(t_push *push);
@@ -98,5 +101,10 @@ char	**ft_split(char *s, char c);
 long	ft_atolong(char *str, t_push *push);
 int		ft_strlen(char *str);
 int		ft_putstr(char *str);
+void	*ft_memset(void *s, int c, int n);
+void	*ft_calloc(int nmeb, int size);
+
+void	print_stacks(t_push *push);
+int		alen(int *array);
 
 #endif
