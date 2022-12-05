@@ -22,6 +22,7 @@ void	ra(t_push *push)
 	while (++i < (push->a.size - 1))
 		push->a.array[i] = push->a.array[i + 1];
 	push->a.array[i] = temp;
+	ft_putstr("ra\n");
 }
 
 void	rb(t_push *push)
@@ -72,6 +73,7 @@ void	pb(t_push *push)
 			push->a.array[i] = push->swap.array[i];
 		free (push->swap.array);
 		pb2(push, temp);
+		ft_putstr("pb\n");
 	}
 }
 

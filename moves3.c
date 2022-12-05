@@ -22,6 +22,7 @@ void	rra(t_push *push)
 	while (--i > 0)
 		push->a.array[i] = push->a.array[i - 1];
 	push->a.array[0] = temp;
+	ft_putstr("rra\n");
 }
 
 void	rrb(t_push *push)

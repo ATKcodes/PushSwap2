@@ -91,6 +91,16 @@ void	count_letters(int argc, char *argv[], t_push *push)
 	}
 }
 
+void	print_stacks(t_push *push)
+{
+	for (int i = 0; i < push->a.size; i++)
+		printf("stack a[i] = %d\n", push->a.array[i]);
+	printf("\n");
+	for (int i = 0; i < push->b.size; i++)
+		printf("stack b[i] = %d\n", push->b.array[i]);
+	printf("\n\n");
+}
+
 int	main(int argc, char *argv[])
 {
 	t_push	push;
@@ -100,9 +110,5 @@ int	main(int argc, char *argv[])
 	stack_gen(&push);
 	third_stack_sorting(&push);
 	push_swap(&push);
-	// for (int i = 0; i < push.a.size; i++)
-	// 	printf("stack a[i] = %d\n", push.a.array[i]);
-	// for (int i = 0; i < push.b.size; i++)
-	// 	printf("stack b[i] = %d\n", push.b.array[i]);
 	free_all(&push);
 }

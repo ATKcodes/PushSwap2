@@ -48,12 +48,16 @@ typedef struct s_push{
 	int		*lis_final;
 }			t_push;
 
+void	print_stacks(t_push *push);
+int		check_lis(t_push *push, int elem);
+void	move_lis(t_push *push);
 int		alen(int *array);
 void	lis_search(t_push *push);
 void	find_lis(t_push *push);
 void	push_swap(t_push *push);
 
 void	free_all(t_push *push);
+void	free_matrix(t_push *push);
 
 void	sa(t_push *push);
 void	sb(t_push *push);

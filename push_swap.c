@@ -12,6 +12,47 @@
 
 #include "pushswap.h"
 
+// 1 = is in the lis, 0 = is not in the lis.
+int	check_lis(t_push *push, int elem)
+{
+	int	i;
+
+	i = -1;
+	while (++i < alen(push->lis_final))
+	{
+		if (elem == push->lis_final[i])
+			return (1);
+	}
+	return (0);
+}
+
+void	move_lis(t_push *push)
+{
+	int	i;
+	int	n;
+	int tot;
+
+	i = -1;
+	n = 0;
+	tot = push->a.size;
+	printf("lis len = %d\n", alen(push->lis_final));
+	i = -1;
+	while (++i < alen(push->lis_final))
+		printf ("%d\n", push->lis_final[i]);
+	i = -1;
+	while (++i < tot)
+	{
+		if (check_lis(push, push->a.array[0]) == 1)
+			ra(push);
+		else
+		{
+			pb(push);
+			n++;
+		}
+	}
+	print_stacks(push);
+}
+
 int	alen(int *array)
 {
 	int	i;
@@ -42,6 +83,7 @@ void	lis_search(t_push *push)
 	push->lis_final = ft_calloc (alen(push->lis[max_i]) + 1, sizeof(int));
 	while (++i < alen(push->lis[max_i]))
 		push->lis_final[i] = push->lis[max_i][i];
+	move_lis(push);
 }
 
 void	find_lis(t_push *push)
@@ -73,6 +115,7 @@ void	find_lis(t_push *push)
 		}
 	}
 	lis_search(push);
+	free_matrix(push);
 }
 
 void	push_swap(t_push *push)
@@ -81,8 +124,4 @@ void	push_swap(t_push *push)
 
 	i = -1;
 	find_lis(push);
-	printf("lis len = %d\n", alen(push->lis_final));
-	i = -1;
-	while (++i < alen(push->lis_final))
-		printf ("%d\n", push->lis_final[i]);
 }

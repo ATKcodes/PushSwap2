@@ -18,3 +18,12 @@ void	free_all(t_push *push)
 	free (push->a.array);
 	free (push->c.array);
 }
+
+void	free_matrix(t_push *push)
+{
+	int	i;
+
+	i = -1;
+	while (++i < push->a.size)
+		free (push->lis[i]);
+}
