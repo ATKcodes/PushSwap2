@@ -39,10 +39,14 @@ typedef struct s_pars{
 	long	*array;
 }			t_pars;
 
+//type_a && type_b : 1 = if positive, 0 if negative.
 typedef struct s_calc{
 	int		*mov_a;
 	int		*mov_b;
-}
+	int		best_move;
+	int		type_a;
+	int		type_b;
+}			t_calc;
 
 typedef struct s_push{
 	t_stack	a;
@@ -50,11 +54,15 @@ typedef struct s_push{
 	t_stack	c;
 	t_stack	swap;
 	t_pars	pars;
+	t_calc	calc;
 	int		**lis;
 	int		temp;
 	int		*lis_final;
 }			t_push;
 
+void	calc_b(t_push *push, int i);
+void	calc_a2(t_push *push, int i, int d);
+void	calc_a(t_push *push, int i);
 void	find_extremes(t_push *push);
 void	calc_moves(t_push *push);
 
