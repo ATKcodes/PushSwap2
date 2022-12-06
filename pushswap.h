@@ -39,6 +39,11 @@ typedef struct s_pars{
 	long	*array;
 }			t_pars;
 
+typedef struct s_calc{
+	int		*mov_a;
+	int		*mov_b;
+}
+
 typedef struct s_push{
 	t_stack	a;
 	t_stack	b;
