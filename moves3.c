@@ -35,6 +35,7 @@ void	rrb(t_push *push)
 	while (--i > 0)
 		push->b.array[i] = push->b.array[i - 1];
 	push->b.array[0] = temp;
+	ft_putstr("rrb\n");
 }
 
 void	rrr(t_push *push)
@@ -52,4 +53,5 @@ void	rrr(t_push *push)
 	while (--i > 0)
 		push->b.array[i] = push->b.array[i - 1];
 	push->b.array[0] = temp;
+	ft_putstr("rrr\n");
 }

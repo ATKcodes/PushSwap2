@@ -12,9 +12,18 @@
 
 #include "pushswap.h"
 
+void	find_best2(t_push *push, int i)
+{
+	if (push->calc.best_move < push->calc.curr_best)
+	{
+		push->calc.curr_best = push->calc.best_move;
+		push->calc.best_index = i;
+	}
+}
+
 void	find_best(t_push *push, int i)
 {
-	if (push->calc.mov_a[i] >= 0 && push->calc.mov_b[i] > 0)
+	if (push->calc.mov_a[i] >= 0 && push->calc.mov_b[i] >= 0)
 	{
 		if (push->calc.mov_a[i] > push->calc.mov_b[i])
 			push->calc.best_move = push->calc.mov_a[i];
@@ -36,4 +45,96 @@ void	find_best(t_push *push, int i)
 		else
 			push->calc.best_move = (-1 * push->calc.mov_a[i]);
 	}
+	find_best2(push, i);
+}
+
+void	move4(t_push *push)
+{
+	if (push->calc.mov_a[push->calc.best_index] < 0
+		&& push->calc.mov_b[push->calc.best_index] < 0)
+	{
+		while (push->calc.mov_a[push->calc.best_index] < 0 && push->calc.mov_b[push->calc.best_index] < 0)
+		{
+			push->calc.mov_a += 1;
+			push->calc.mov_b += 1;
+			rr(push);
+		}
+		while (push->calc.mov_a[push->calc.best_index] < 0)
+		{
+			push->calc.mov_a += 1;
+			ra(push);
+		}
+		while (push->calc.mov_b[push->calc.best_index] < 0)
+		{
+			push->calc.mov_b += 1;
+			rb(push);
+		}
+		pa(push);
+	}
+}
+
+void	move3(t_push *push)
+{
+	if (push->calc.mov_a[push->calc.best_index] < 0
+		&& push->calc.mov_b[push->calc.best_index] >= 0)
+	{
+		while (push->calc.mov_a[push->calc.best_index] < 0)
+		{
+			push->calc.mov_a += 1;
+			rra(push);
+		}
+		while (push->calc.mov_b[push->calc.best_index] > 0)
+		{
+			push->calc.mov_b -= 1;
+			rb(push);
+		}
+		pa(push);
+	}
+	move4(push);
+}
+
+void	move2(t_push *push)
+{
+	if (push->calc.mov_a[push->calc.best_index] >= 0
+		&& push->calc.mov_b[push->calc.best_index] < 0)
+	{
+		while (push->calc.mov_a[push->calc.best_index] > 0)
+		{
+			push->calc.mov_a -= 1;
+			ra(push);
+		}
+		while (push->calc.mov_b[push->calc.best_index] < 0)
+		{
+			push->calc.mov_b += 1;
+			rrb(push);
+		}
+		pa(push);
+	}
+	move3(push);
+}
+
+void	move(t_push *push)
+{
+	if (push->calc.mov_a[push->calc.best_index] >= 0
+		&& push->calc.mov_b[push->calc.best_index] >= 0)
+	{
+		while (push->calc.mov_a[push->calc.best_index] > 0 && push->calc.mov_b[push->calc.best_index] > 0)
+		{
+			push->calc.mov_a -= 1;
+			push->calc.mov_b -= 1;
+			rr(push);
+		}
+		while (push->calc.mov_a[push->calc.best_index] > 0)
+		{
+			push->calc.mov_a -= 1;
+			ra(push);
+		}
+		while (push->calc.mov_b[push->calc.best_index] > 0)
+		{
+			push->calc.mov_b -= 1;
+			rb(push);
+		}
+		pa(push);
+	}
+	move2(push);
 }

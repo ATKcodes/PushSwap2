@@ -73,38 +73,43 @@ void	calc_a(t_push *push, int i)
 	if (push->b.array[i] > push->a.max)
 	{
 		while (push->a.array[d] != push->a.max)
-			push->a.array[d++];
+			d++;
 	}
 	else if (push->a.array[i] < push->a.min)
 	{
 		while (push->a.array[d] != push->a.min)
-			push->a.array[d++];
+			d++;
 	}
 	calc_a2(push, i, d);
 }
 
-void	print_moves(t_push *push)
-{
-	for (int i = 0; i < push->b.size; i++)
-		printf("mov_a(%d) = %d\n", push->b.array[i], push->calc.mov_a[i]);
-	printf("\n");
-	for (int i = 0; i < push->b.size; i++)
-		printf("mov_b(%d) = %d\n", push->b.array[i], push->calc.mov_b[i]);
-	printf("\n\n");
-}
+// void	print_moves(t_push *push)
+// {
+// 	for (int i = 0; i < push->b.size; i++)
+// 		printf("mov_a(%d) = %d\n", push->b.array[i], push->calc.mov_a[i]);
+// 	printf("\n");
+// 	for (int i = 0; i < push->b.size; i++)
+// 		printf("mov_b(%d) = %d\n", push->b.array[i], push->calc.mov_b[i]);
+// 	printf("\n\n");
+// }
 
 void	calc_moves(t_push *push)
 {
 	int	i;
 
-	i = -1;
+	push->calc.curr_best = push->b.size;
 	while (push->b.size > 0)
 	{
+		i = -1;
 		push->calc.mov_b = ft_calloc(push->b.size + 1, sizeof(int));
 		push->calc.mov_a = ft_calloc(push->b.size + 1, sizeof(int));
-		find_extremes(push);
-		calc_b(push, i);
-		calc_a(push, i);
-		find_best(push, i);
+		while (++i < push->b.size)
+		{
+			find_extremes(push);
+			calc_b(push, i);
+			calc_a(push, i);
+			find_best(push, i);
+		}
+		move(push);
 	}
 }
