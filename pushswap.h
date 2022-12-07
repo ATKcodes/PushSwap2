@@ -62,6 +62,7 @@ typedef struct s_push{
 	int		*lis_final;
 }			t_push;
 
+void	order_lis(t_push *push);
 void	find_best2(t_push *push, int i);
 void	find_best(t_push *push, int i);
 void	move4(t_push *push);

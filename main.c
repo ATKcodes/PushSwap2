@@ -101,5 +101,6 @@ int	main(int argc, char *argv[])
 	stack_gen(&push);
 	third_stack_sorting(&push);
 	push_swap(&push);
+	print_stacks(&push);
 	free_all(&push);
 }

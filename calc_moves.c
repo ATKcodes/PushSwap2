@@ -32,7 +32,7 @@ void	calc_b(t_push *push, int i)
 {
 	int	rrb;
 
-	rrb = i - push->b.size;
+	rrb = i - push->b.size + 1;
 	if (-rrb < i)
 		push->calc.mov_b[i] = rrb;
 	else
@@ -58,7 +58,7 @@ void	calc_a2(t_push *push, int i, int d)
 			d++;
 		}
 	}
-	rra = d - push->a.size;
+	rra = d - push->a.size + 1;
 	if (-rra < d)
 		push->calc.mov_a[i] = rra;
 	else

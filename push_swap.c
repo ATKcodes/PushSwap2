@@ -73,6 +73,11 @@ void	lis_search(t_push *push)
 	push->lis_final = ft_calloc (alen(push->lis[max_i]) + 1, sizeof(int));
 	while (++i < alen(push->lis[max_i]))
 		push->lis_final[i] = push->lis[max_i][i];
+	if (alen(push->lis_final) == push->a.size && push->a.array[0] == 1)
+	{
+		free_all(push);
+		exit (0);
+	}
 	move_lis(push);
 }
 
@@ -114,5 +119,6 @@ void	push_swap(t_push *push)
 	find_lis(push);
 	lis_search(push);
 	free_matrix(push);
+	order_lis(push);
 	calc_moves(push);
 }
