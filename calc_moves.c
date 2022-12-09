@@ -58,7 +58,7 @@ void	calc_a2(t_push *push, int i, int d)
 			d++;
 		}
 	}
-	rra = d - push->a.size + 1;
+	rra = d - push->a.size;
 	if (-rra < d)
 		push->calc.mov_a[i] = rra;
 	else

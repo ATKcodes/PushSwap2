@@ -143,7 +143,7 @@ void	move(t_push *push)
 		while (push->calc.mov_a[push->calc.best_index] > 0)
 		{
 			push->calc.mov_a[push->calc.best_index] -= 1;
-			rra(push);
+			ra(push);
 		}
 		while (push->calc.mov_b[push->calc.best_index] > 0)
 		{

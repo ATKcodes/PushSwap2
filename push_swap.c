@@ -115,10 +115,23 @@ void	push_swap(t_push *push)
 {
 	int	i;
 
-	i = -1;
+	i = 0;
 	find_lis(push);
 	lis_search(push);
 	free_matrix(push);
 	order_lis(push);
 	calc_moves(push);
+	find_extremes(push);
+	while (push->a.array[i] != push->a.min)
+		i++;
+	if (i > (push->a.size / 2))
+	{
+		while (push->a.array[0] != push->a.min)
+			rra(push);
+	}
+	else if (i != 0)
+	{
+		while (push->a.array[0] != push->a.min)
+			ra(push);
+	}
 }
