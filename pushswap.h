@@ -82,6 +82,7 @@ void	lis_search(t_push *push);
 void	find_lis(t_push *push);
 void	push_swap(t_push *push);
 
+void	free_perfect(t_push	*push);
 void	free_all(t_push *push);
 void	free_matrix(t_push *push);
 

@@ -70,17 +70,20 @@ void	calc_a(t_push *push, int i)
 	int	d;
 
 	d = 0;
-	if (push->b.array[i] > push->a.max)
+	if (i < push->a.size)
 	{
-		while (push->a.array[d] != push->a.max)
-			d++;
+		if (push->b.array[i] > push->a.max)	
+		{
+			while (push->a.array[d] != push->a.max)
+				d++;
+		}
+		else if (push->a.array[i] < push->a.min)
+		{
+			while (push->a.array[d] != push->a.min)
+				d++;
+		}
+		calc_a2(push, i, d);
 	}
-	else if (push->a.array[i] < push->a.min)
-	{
-		while (push->a.array[d] != push->a.min)
-			d++;
-	}
-	calc_a2(push, i, d);
 }
 
 // void	print_moves(t_push *push)
@@ -98,9 +101,13 @@ void	calc_moves(t_push *push)
 	int	i;
 
 	push->calc.curr_best = push->b.size;
+	push->calc.mov_b = ft_calloc(push->b.size + 1, sizeof(int));
+	push->calc.mov_a = ft_calloc(push->b.size + 1, sizeof(int));
 	while (push->b.size > 0)
 	{
 		i = -1;
+		free (push->calc.mov_a);
+		free (push->calc.mov_b);
 		push->calc.mov_b = ft_calloc(push->b.size + 1, sizeof(int));
 		push->calc.mov_a = ft_calloc(push->b.size + 1, sizeof(int));
 		while (++i < push->b.size)

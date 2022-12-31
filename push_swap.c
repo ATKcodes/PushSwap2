@@ -50,7 +50,6 @@ void	move_lis(t_push *push)
 			n++;
 		}
 	}
-	print_stacks(push);
 }
 
 void	lis_search(t_push *push)
@@ -75,7 +74,7 @@ void	lis_search(t_push *push)
 		push->lis_final[i] = push->lis[max_i][i];
 	if (alen(push->lis_final) == push->a.size && push->a.array[0] == 1)
 	{
-		free_all(push);
+		free_perfect(push);
 		exit (0);
 	}
 	move_lis(push);

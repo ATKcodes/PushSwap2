@@ -12,11 +12,21 @@
 
 #include "pushswap.h"
 
+void	free_perfect(t_push *push)
+{
+	free (push->b.array);
+	free (push->a.array);
+	free (push->c.array);
+}
+
 void	free_all(t_push *push)
 {
 	free (push->b.array);
 	free (push->a.array);
 	free (push->c.array);
+	free (push->calc.mov_a);
+	free (push->calc.mov_b);
+	free (push->lis_final);
 }
 
 void	free_matrix(t_push *push)
@@ -24,6 +34,7 @@ void	free_matrix(t_push *push)
 	int	i;
 
 	i = -1;
-	while (++i < push->a.size)
+	while (++i < push->pars.size)
 		free (push->lis[i]);
+	free (push->lis);
 }
