@@ -18,17 +18,25 @@ void	assigning_a(t_push *push)
 {
 	int	i;
 	int	d;
+	int	*copy_a;
 
 	i = -1;
 	push->b.size = 0;
 	push->b.array = malloc (1);
+	copy_a = malloc (sizeof(int) * push->a.size);
+	while (++i < push->a.size)
+		copy_a[i] = push->a.array[i];
+	i = -1;
 	while (++i < push->a.size)
 	{
 		d = -1;
 		while (++d < push->a.size)
-			if (push->a.array[i] == push->c.array[d])
+		{
+			if (copy_a[i] == push->c.array[d])
 				push->a.array[i] = d + 1;
+		}
 	}
+	free (copy_a);
 }
 
 void	swap_a(t_push *push, int i)

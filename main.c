@@ -12,7 +12,6 @@
 
 #include "pushswap.h"
 
-//Continua dallo costruire la matrice per calcolare il numero minimo di mosse e il calcolo in se conseguenzialmente
 void	third_stack_sorting(t_push *push)
 {
 	int	i;
@@ -43,7 +42,7 @@ void	stack_gen(t_push *push)
 	i = -1;
 	while (++i < push->pars.size)
 		free (push->pars.split[i]);
-	free (push->pars.split);
+	free(push->pars.split);
 	push->a.array = malloc (sizeof(push->a.array) * push->pars.size);
 	push->a.size = push->pars.size;
 	i = -1;

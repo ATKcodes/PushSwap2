@@ -121,6 +121,7 @@ void	push_swap(t_push *push)
 	order_lis(push);
 	calc_moves(push);
 	find_extremes(push);
+	print_stacks(push);
 	while (push->a.array[i] != push->a.min)
 		i++;
 	if (i > (push->a.size / 2))

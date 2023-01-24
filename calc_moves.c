@@ -32,7 +32,7 @@ void	calc_b(t_push *push, int i)
 {
 	int	rrb;
 
-	rrb = i - push->b.size + 1;
+	rrb = i - push->b.size;
 	if (-rrb < i)
 		push->calc.mov_b[i] = rrb;
 	else
@@ -77,7 +77,7 @@ void	calc_a(t_push *push, int i)
 			while (push->a.array[d] != push->a.max)
 				d++;
 		}
-		else if (push->a.array[i] < push->a.min)
+		else if (push->b.array[i] < push->a.min)
 		{
 			while (push->a.array[d] != push->a.min)
 				d++;
@@ -85,16 +85,6 @@ void	calc_a(t_push *push, int i)
 		calc_a2(push, i, d);
 	}
 }
-
-// void	print_moves(t_push *push)
-// {
-// 	for (int i = 0; i < push->b.size; i++)
-// 		printf("mov_a(%d) = %d\n", push->b.array[i], push->calc.mov_a[i]);
-// 	printf("\n");
-// 	for (int i = 0; i < push->b.size; i++)
-// 		printf("mov_b(%d) = %d\n", push->b.array[i], push->calc.mov_b[i]);
-// 	printf("\n\n");
-// }
 
 void	calc_moves(t_push *push)
 {
@@ -118,5 +108,6 @@ void	calc_moves(t_push *push)
 			find_best(push, i);
 		}
 		move(push);
+		print_stacks(push);
 	}
 }
