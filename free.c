@@ -29,6 +29,12 @@ void	free_all(t_push *push)
 	free (push->lis_final);
 }
 
+void	free_3(t_push *push)
+{
+	free (push->b.array);
+	free (push->a.array);
+	free (push->lis_final);
+}
 void	free_matrix(t_push *push)
 {
 	int	i;

@@ -98,8 +98,16 @@ int	main(int argc, char *argv[])
 	count_letters(argc, argv, &push);
 	check_input(&push);
 	stack_gen(&push);
-	third_stack_sorting(&push);
-	push_swap(&push);
-	print_stacks(&push);
-	free_all(&push);
+	if (push.a.size == 3)
+	{
+		case3(&push);
+		free_3(&push);
+	}
+	else
+	{
+		third_stack_sorting(&push);
+		push_swap(&push);
+		// print_stacks(&push);
+		free_all(&push);
+	}
 }

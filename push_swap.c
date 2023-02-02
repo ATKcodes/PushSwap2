@@ -35,10 +35,10 @@ void	move_lis(t_push *push)
 	i = -1;
 	n = 0;
 	tot = push->a.size;
-	printf("lis len = %d\n", alen(push->lis_final));
-	i = -1;
-	while (++i < alen(push->lis_final))
-		printf ("%d\n", push->lis_final[i]);
+	//printf("lis len = %d\n", alen(push->lis_final));
+	// i = -1;
+	// while (++i < alen(push->lis_final))
+	// 	printf ("%d\n", push->lis_final[i]);
 	i = -1;
 	while (++i < tot)
 	{
@@ -121,7 +121,7 @@ void	push_swap(t_push *push)
 	order_lis(push);
 	calc_moves(push);
 	find_extremes(push);
-	print_stacks(push);
+	//print_stacks(push);
 	while (push->a.array[i] != push->a.min)
 		i++;
 	if (i > (push->a.size / 2))

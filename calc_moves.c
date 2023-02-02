@@ -108,6 +108,6 @@ void	calc_moves(t_push *push)
 			find_best(push, i);
 		}
 		move(push);
-		print_stacks(push);
+		//print_stacks(push);
 	}
 }

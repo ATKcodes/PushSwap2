@@ -114,7 +114,7 @@ void	move2(t_push *push)
 	if (push->calc.mov_a[push->calc.best_index] >= 0
 		&& push->calc.mov_b[push->calc.best_index] < 0)
 	{
-		while (push->calc.mov_a[push->calc.best_index] > 0)
+		while (push->calc.mov_a[push->calc.best_index] >= 0)
 		{
 			push->calc.mov_a[push->calc.best_index] -= 1;
 			ra(push);

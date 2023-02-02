@@ -62,6 +62,8 @@ typedef struct s_push{
 	int		*lis_final;
 }			t_push;
 
+void 	case3(t_push *push);
+
 void	order_lis(t_push *push);
 void	find_best2(t_push *push, int i);
 void	find_best(t_push *push, int i);
@@ -83,6 +85,7 @@ void	find_lis(t_push *push);
 void	push_swap(t_push *push);
 
 void	free_perfect(t_push	*push);
+void	free_3(t_push *push);
 void	free_all(t_push *push);
 void	free_matrix(t_push *push);
 
