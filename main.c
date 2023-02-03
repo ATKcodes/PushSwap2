@@ -107,7 +107,7 @@ int	main(int argc, char *argv[])
 	{
 		third_stack_sorting(&push);
 		push_swap(&push);
-		// print_stacks(&push);
+		print_stacks(&push);
 		free_all(&push);
 	}
 }

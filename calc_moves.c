@@ -90,11 +90,11 @@ void	calc_moves(t_push *push)
 {
 	int	i;
 
-	push->calc.curr_best = push->b.size;
 	push->calc.mov_b = ft_calloc(push->b.size + 1, sizeof(int));
 	push->calc.mov_a = ft_calloc(push->b.size + 1, sizeof(int));
 	while (push->b.size > 0)
 	{
+		push->calc.curr_best = push->b.size;
 		i = -1;
 		free (push->calc.mov_a);
 		free (push->calc.mov_b);
