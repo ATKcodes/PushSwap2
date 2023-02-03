@@ -16,7 +16,7 @@ void case3(t_push *push)
 {
 	if (push->a.array[0] == 1 && push->a.array[1] == 3)
 	{
-		ra(push);
+		rra(push);
 		sa(push);
 	}
 	else if (push->a.array[0] == 2 && push->a.array[1] == 1)

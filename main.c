@@ -64,14 +64,14 @@ void	check_input(t_push *push)
 			if (push->pars.input[i + 1] < 48 || push->pars.input[i + 1] > 57)
 			{
 				free (push->pars.input);
-				ft_error("invalid input : no number after sign");
+				ft_error("Error : no number after sign");
 			}
 		}
 		else if ((push->pars.input[i] < 48 || push->pars.input[i] > 57)
 			&& push->pars.input[i] != 32)
 		{
 			free (push->pars.input);
-			ft_error("invalid input : invalid char");
+			ft_error("Error : invalid char");
 		}
 	}
 }
@@ -95,19 +95,23 @@ int	main(int argc, char *argv[])
 {
 	t_push	push;
 
+	if (argc == 1)
+		exit(0);
 	count_letters(argc, argv, &push);
 	check_input(&push);
 	stack_gen(&push);
+	third_stack_sorting(&push);
 	if (push.a.size == 3)
 	{
 		case3(&push);
-		free_3(&push);
+		//print_stacks(&push);
+		free(push.a.array);
+		free(push.c.array);
 	}
 	else
 	{
-		third_stack_sorting(&push);
 		push_swap(&push);
-		print_stacks(&push);
+		//print_stacks(&push);
 		free_all(&push);
 	}
 }

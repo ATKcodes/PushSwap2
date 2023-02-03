@@ -28,5 +28,5 @@ void	not_int(t_push *push)
 	while (++i < push->pars.size)
 		free(push->pars.split[i]);
 	free(push->pars.split);
-	ft_error("Invalid input : one of the numbers is not an int.");
+	ft_error("Error : one of the arguments is not an int.");
 }
