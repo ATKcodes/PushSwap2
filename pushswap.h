@@ -48,6 +48,7 @@ typedef struct s_calc{
 	int		best_move;
 	int		curr_best;
 	int		best_index;
+	int		moveflag;
 }			t_calc;
 
 typedef struct s_push{
