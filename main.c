@@ -61,6 +61,11 @@ void	check_input(t_push *push)
 	{
 		if (push->pars.input[i] == 45 || push->pars.input[i] == 43)
 		{
+			if (i > 0 && push->pars.input[i - 1] != 32)
+			{
+				free (push->pars.input);
+				ft_error("Error : numbers must be separated by spaces");
+			}
 			if (push->pars.input[i + 1] < 48 || push->pars.input[i + 1] > 57)
 			{
 				free (push->pars.input);
