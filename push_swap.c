@@ -83,6 +83,9 @@ void	find_lis(t_push *push)
 
 	i = -1;
 	n = -1;
+	push->lis = malloc (sizeof (int *) * push->a.size);
+	while (++i < push->a.size)
+		push->lis[i] = ft_calloc (sizeof(int), push->a.size + 1);
 	while (++n < push->a.size)
 	{
 		i = n;
@@ -110,9 +113,6 @@ void	push_swap(t_push *push)
 	int	i;
 
 	i = 0;
-	push->lis = malloc (sizeof (int *) * push->a.size);
-	while (++i < push->a.size)
-		push->lis[i] = ft_calloc (sizeof(int), push->a.size + 1);
 	find_lis(push);
 	lis_search(push);
 	free_matrix(push);

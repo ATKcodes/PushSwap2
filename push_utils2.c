@@ -21,12 +21,13 @@ int	alen(int *array)
 		i++;
 	return (i);
 }
-// void	print_stacks(t_push *push)
-// {
-// 	for (int i = 0; i < push->a.size; i++)
-// 		printf("stack a[i] = %d\n", push->a.array[i]);
-// 	printf("\n");
-// 	for (int i = 0; i < push->b.size; i++)
-// 		printf("stack b[i] = %d\n", push->b.array[i]);
-// 	printf("\n\n");
-// }
+
+void	print_stacks(t_push *push)
+{
+	for (int i = 0; i < push->a.size; i++)
+		printf("stack a[i] = %d\n", push->a.array[i]);
+	printf("\n");
+	for (int i = 0; i < push->b.size; i++)
+		printf("stack b[i] = %d\n", push->b.array[i]);
+	printf("\n\n");
+}

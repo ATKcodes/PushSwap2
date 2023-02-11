@@ -16,8 +16,8 @@ void	case3(t_push *push)
 {
 	if (push->a.array[0] == 1 && push->a.array[1] == 3)
 	{
-		ra(push);
 		sa(push);
+		ra(push);
 	}
 	else if (push->a.array[0] == 2 && push->a.array[1] == 1)
 		sa(push);
@@ -34,23 +34,23 @@ void	case3(t_push *push)
 
 void	case3_5(t_push *push)
 {
-	if (push->a.array[0] < push->a.array[1]
-		&& push->a.array[1] > push->a.array[2])
+	if (push->a.array[0] == push->a.min
+		&& push->a.array[1] == push->a.max)
 	{
-		ra(push);
 		sa(push);
+		ra(push);
 	}
-	else if (push->a.array[0] > push->a.array[1]
-		&& push->a.array[0] < push->a.array[2])
+	else if (push->a.array[0] != push->a.max
+		&& push->a.array[1] == push->a.min)
 		sa(push);
-	else if (push->a.array[0] < push->a.array[1]
-		&& push->a.array[0] > push->a.array[2])
+	else if (push->a.array[0] != push->a.min
+		&& push->a.array[1] == push->a.max)
 		rra(push);
-	else if (push->a.array[0] > push->a.array[1]
-		&& push->a.array[1] < push->a.array[2])
+	else if (push->a.array[0] == push->a.max
+		&& push->a.array[1] == push->a.min)
 		ra(push);
-	else if (push->a.array[0] > push->a.array[1]
-		&& push->a.array[1] > push->a.array[2])
+	else if (push->a.array[0] == push->a.max
+		&& push->a.array[1] != push->a.min)
 	{
 		ra(push);
 		sa(push);
@@ -61,10 +61,11 @@ void	extremes_case5(t_push *push)
 {
 	if (push->a.max == 5 && push->a.min == 3)
 	{
-		if (push->b.array[0] == 2)
+		if (push->b.array[0] == 1)
 			sb(push);
 		pa(push);
 		pa(push);
+		push->flag_5 = 1;
 	}
 	else if (push->a.max == 3 && push->a.min == 1)
 	{
@@ -74,6 +75,7 @@ void	extremes_case5(t_push *push)
 		pa(push);
 		ra(push);
 		ra(push);
+		push->flag_5 = 1;
 	}
 }
 
@@ -81,23 +83,29 @@ void	case5(t_push *push)
 {
 	int	i;
 
-	i = -1;
+	i = 0;
 	pb(push);
 	pb(push);
-	case3_5(push);
 	find_extremes(push);
+	case3_5(push);
 	extremes_case5(push);
-	calc_moves(push);
-	while (push->a.array[i] != push->a.min)
-		i++;
-	if (i > (push->a.size / 2))
+	if (push->flag_5 != 1)
 	{
-		while (push->a.array[0] != push->a.min)
-			rra(push);
-	}
-	else if (i != 0)
-	{
-		while (push->a.array[0] != push->a.min)
-			ra(push);
+		calc_moves(push);
+		free (push->calc.mov_a);
+		free (push->calc.mov_b);
+		find_extremes(push);
+		while (push->a.array[i] != push->a.min)
+			i++;
+		if (i > (push->a.size / 2))
+		{
+			while (push->a.array[0] != push->a.min)
+				rra(push);
+		}
+		else if (i != 0)
+		{
+			while (push->a.array[0] != push->a.min)
+				ra(push);
+		}
 	}
 }

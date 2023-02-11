@@ -105,10 +105,12 @@ int	main(int argc, char *argv[])
 	{
 		case3(&push);
 		free(push.a.array);
+		free(push.b.array);
 		free(push.c.array);
 	}
 	else if (push.a.size == 5)
 	{
+		push.flag_5 = 0;
 		case5(&push);
 		free(push.a.array);
 		free(push.b.array);

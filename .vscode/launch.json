@@ -9,7 +9,7 @@
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "/home/andrea/c/PushSwap2/push_swap",
-			"args": ["-37602738 1559767356 1356532955"],
+			"args": ["-2139192592 -1214877717 1424002670 1835485453 -2050090552"],
 			"cwd": "/home/andrea/c/PushSwap2",
 			"environment": [],
 			"externalConsole": false,

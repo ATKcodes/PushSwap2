@@ -62,6 +62,7 @@ typedef struct s_push{
 	int		**lis;
 	int		temp;
 	int		*lis_final;
+	int		flag_5;
 }			t_push;
 
 void	case3(t_push *push);
