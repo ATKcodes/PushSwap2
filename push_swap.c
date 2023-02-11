@@ -30,15 +30,11 @@ void	move_lis(t_push *push)
 {
 	int	i;
 	int	n;
-	int tot;
+	int	tot;
 
 	i = -1;
 	n = 0;
 	tot = push->a.size;
-	//printf("lis len = %d\n", alen(push->lis_final));
-	// i = -1;
-	// while (++i < alen(push->lis_final))
-	// 	printf ("%d\n", push->lis_final[i]);
 	i = -1;
 	while (++i < tot)
 	{
@@ -55,8 +51,8 @@ void	move_lis(t_push *push)
 void	lis_search(t_push *push)
 {
 	int	max;
-	int i;
-	int max_i;
+	int	i;
+	int	max_i;
 
 	max = 0;
 	i = -1;
@@ -83,12 +79,9 @@ void	lis_search(t_push *push)
 void	find_lis(t_push *push)
 {
 	int	i;
-	int n;
+	int	n;
 
 	i = -1;
-	push->lis = malloc (sizeof (int *) * push->a.size);
-	while (++i < push->a.size)
-		push->lis[i] = ft_calloc (sizeof(int), push->a.size + 1);
 	n = -1;
 	while (++n < push->a.size)
 	{
@@ -103,8 +96,10 @@ void	find_lis(t_push *push)
 			}
 			else
 			{
-				if (push->a.array[i - push->a.size] > push->lis[n][alen(push->lis[n]) - 1])
-					push->lis[n][alen(push->lis[n])] = push->a.array[i - push->a.size];
+				if (push->a.array[i - push->a.size]
+					> push->lis[n][alen(push->lis[n]) - 1])
+					push->lis[n][alen(push->lis[n])]
+						= push->a.array[i - push->a.size];
 			}
 		}
 	}
@@ -115,13 +110,15 @@ void	push_swap(t_push *push)
 	int	i;
 
 	i = 0;
+	push->lis = malloc (sizeof (int *) * push->a.size);
+	while (++i < push->a.size)
+		push->lis[i] = ft_calloc (sizeof(int), push->a.size + 1);
 	find_lis(push);
 	lis_search(push);
 	free_matrix(push);
 	order_lis(push);
 	calc_moves(push);
 	find_extremes(push);
-	//print_stacks(push);
 	while (push->a.array[i] != push->a.min)
 		i++;
 	if (i > (push->a.size / 2))

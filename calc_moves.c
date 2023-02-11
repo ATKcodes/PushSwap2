@@ -41,7 +41,7 @@ void	calc_b(t_push *push, int i)
 
 void	calc_a2(t_push *push, int i, int d)
 {
-	int rra;
+	int	rra;
 
 	if (push->b.array[i] < push->a.max && push->a.min < push->b.array[i])
 	{
@@ -70,7 +70,7 @@ void	calc_a(t_push *push, int i)
 	int	d;
 
 	d = 0;
-	if (push->b.array[i] > push->a.max)	
+	if (push->b.array[i] > push->a.max)
 	{
 		while (push->a.array[d] != push->a.max)
 		d++;
@@ -105,8 +105,6 @@ void	calc_moves(t_push *push)
 			calc_a(push, i);
 			find_best(push, i);
 		}
-		//print_stacks(push);
 		move(push);
-		//print_stacks(push);
 	}
 }

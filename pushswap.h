@@ -39,7 +39,8 @@ typedef struct s_pars{
 	long	*array;
 }			t_pars;
 
-// best_move = lowest number of moves for the index being analyzed in that moment
+// best_move = lowest number of moves for the
+//			   index being analyzed in that moment
 // curr_best = lowest number of moves until nowl
 // best_index = index of curr_best.
 typedef struct s_calc{
@@ -63,11 +64,15 @@ typedef struct s_push{
 	int		*lis_final;
 }			t_push;
 
-void 	case3(t_push *push);
+void	case3(t_push *push);
+void	case3_5(t_push *push);
+void	extremes_case5(t_push *push);
+void	case5(t_push *push);
 
 void	order_lis(t_push *push);
 void	find_best2(t_push *push, int i);
 void	find_best(t_push *push, int i);
+
 void	move4(t_push *push);
 void	move3(t_push *push);
 void	move2(t_push *push);

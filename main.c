@@ -104,14 +104,19 @@ int	main(int argc, char *argv[])
 	if (push.a.size == 3)
 	{
 		case3(&push);
-		//print_stacks(&push);
 		free(push.a.array);
+		free(push.c.array);
+	}
+	else if (push.a.size == 5)
+	{
+		case5(&push);
+		free(push.a.array);
+		free(push.b.array);
 		free(push.c.array);
 	}
 	else
 	{
 		push_swap(&push);
-		//print_stacks(&push);
 		free_all(&push);
 	}
 }
