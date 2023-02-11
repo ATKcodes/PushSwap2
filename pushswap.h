@@ -69,6 +69,7 @@ void	case3(t_push *push);
 void	case3_5(t_push *push);
 void	extremes_case5(t_push *push);
 void	case5(t_push *push);
+void	cases35(t_push *push);
 
 void	order_lis(t_push *push);
 void	find_best2(t_push *push, int i);
@@ -137,7 +138,7 @@ int		ft_putstr(char *str);
 void	*ft_memset(void *s, int c, int n);
 void	*ft_calloc(int nmeb, int size);
 
-void	print_stacks(t_push *push);
 int		alen(int *array);
+void	find_lis_loop(t_push *push, int i);
 
 #endif

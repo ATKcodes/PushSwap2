@@ -79,33 +79,12 @@ void	lis_search(t_push *push)
 void	find_lis(t_push *push)
 {
 	int	i;
-	int	n;
 
 	i = -1;
-	n = -1;
 	push->lis = malloc (sizeof (int *) * push->a.size);
 	while (++i < push->a.size)
 		push->lis[i] = ft_calloc (sizeof(int), push->a.size + 1);
-	while (++n < push->a.size)
-	{
-		i = n;
-		push->lis[n][0] = push->a.array[n];
-		while (++i < push->a.size + n)
-		{
-			if (i < push->a.size)
-			{
-				if (push->a.array[i] > push->lis[n][alen(push->lis[n]) - 1])
-					push->lis[n][alen(push->lis[n])] = push->a.array[i];
-			}
-			else
-			{
-				if (push->a.array[i - push->a.size]
-					> push->lis[n][alen(push->lis[n]) - 1])
-					push->lis[n][alen(push->lis[n])]
-						= push->a.array[i - push->a.size];
-			}
-		}
-	}
+	find_lis_loop(push, i);
 }
 
 void	push_swap(t_push *push)

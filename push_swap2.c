@@ -84,9 +84,6 @@ void	case5(t_push *push)
 	int	i;
 
 	i = 0;
-	pb(push);
-	pb(push);
-	find_extremes(push);
 	case3_5(push);
 	extremes_case5(push);
 	if (push->flag_5 != 1)
@@ -107,5 +104,31 @@ void	case5(t_push *push)
 			while (push->a.array[0] != push->a.min)
 				ra(push);
 		}
+	}
+}
+
+void	cases35(t_push *push)
+{
+	if (push->a.size == 3)
+	{
+		case3(push);
+		free(push->a.array);
+		free(push->b.array);
+		free(push->c.array);
+	}
+	else if (push->a.size == 5)
+	{
+		push->flag_5 = 0;
+		if (push->a.array[0] != 1 || push->a.array[1] != 2
+			|| push->a.array[2] != 3 || push->a.array[3] != 4)
+		{
+			pb(push);
+			pb(push);
+			find_extremes(push);
+			case5(push);
+		}
+		free(push->a.array);
+		free(push->b.array);
+		free(push->c.array);
 	}
 }

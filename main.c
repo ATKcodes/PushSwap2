@@ -101,21 +101,8 @@ int	main(int argc, char *argv[])
 	check_input(&push);
 	stack_gen(&push);
 	third_stack_sorting(&push);
-	if (push.a.size == 3)
-	{
-		case3(&push);
-		free(push.a.array);
-		free(push.b.array);
-		free(push.c.array);
-	}
-	else if (push.a.size == 5)
-	{
-		push.flag_5 = 0;
-		case5(&push);
-		free(push.a.array);
-		free(push.b.array);
-		free(push.c.array);
-	}
+	if (argc == 4 || argc == 6)
+		cases35(&push);
 	else
 	{
 		push_swap(&push);

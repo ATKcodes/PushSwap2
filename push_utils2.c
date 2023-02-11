@@ -22,12 +22,29 @@ int	alen(int *array)
 	return (i);
 }
 
-void	print_stacks(t_push *push)
+void	find_lis_loop(t_push *push, int i)
 {
-	for (int i = 0; i < push->a.size; i++)
-		printf("stack a[i] = %d\n", push->a.array[i]);
-	printf("\n");
-	for (int i = 0; i < push->b.size; i++)
-		printf("stack b[i] = %d\n", push->b.array[i]);
-	printf("\n\n");
+	int	n;
+
+	n = -1;
+	while (++n < push->a.size)
+	{
+		i = n;
+		push->lis[n][0] = push->a.array[n];
+		while (++i < push->a.size + n)
+		{
+			if (i < push->a.size)
+			{
+				if (push->a.array[i] > push->lis[n][alen(push->lis[n]) - 1])
+					push->lis[n][alen(push->lis[n])] = push->a.array[i];
+			}
+			else
+			{
+				if (push->a.array[i - push->a.size]
+					> push->lis[n][alen(push->lis[n]) - 1])
+					push->lis[n][alen(push->lis[n])]
+						= push->a.array[i - push->a.size];
+			}
+		}
+	}
 }
